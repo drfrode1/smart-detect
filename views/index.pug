@@ -1,0 +1,26 @@
+extends layout
+
+block content
+  h1= title
+  div(class='container')
+  if events.length
+    each event in events
+      div(class='card' style='width: 40rem;')
+        img(src="data:"+event.file.contentType+";base64,"+event.file.data class='rounded; card-img-top')
+        div(class='card-body')
+          h5(class='card-title')= event.camera+' - '+event.fileTime
+          div(class='card-text')
+            table(class='table')
+              thead(class='thead-dark')
+                tr(scope='row')
+                  th(scope='col') Label
+                  th(scope='col') Score
+              each label in event.labels
+                tr(scope='row')
+                  td= label.description
+                  td= label.score
+          a(class=breach ? 'btn-danger' : 'btn-outline-danger' + ' btn card-link', href='#') Suspious
+          a(class=breach ? 'btn-outline-sucess' : 'btn-success' + ' btn card-link', href='#') False alarm
+      br
+  else
+    p No events so far
