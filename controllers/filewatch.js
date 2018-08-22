@@ -1,6 +1,9 @@
-const watch = require('node-watch');
+const chokidar = require('chokidar');
  
-const watcher = watch(process.env.WATCH_FILE, { });
+const watcher = chokidar.watch(process.env.WATCH_FILE, { 
+  usePolling: true,
+  interval: 100
+});
 
  
 watcher.on('error', function(err) {

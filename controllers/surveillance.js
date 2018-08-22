@@ -12,7 +12,7 @@ const srcFile = process.env.WATCH_FILE;
 
 
 
-filewatch.on('change', function(evt, name) {
+filewatch.on('change', function(name) {
     console.log('Changed: %s', name);
 
     getVisionRequest(function(docCnt) {
