@@ -3,8 +3,6 @@ const googlevision = require('./googlevision');
 const fs_sync = require('fs-sync');
 const fs = require('fs');
 const moment = require('moment');
-const FBMessenger = require('fb-messenger')
-const messenger = new FBMessenger({token: process.env.FB_TOKEN})
 
 var Event = require('../models/event');
 const destFile = process.env.DEST_FILE;
@@ -48,7 +46,6 @@ filewatch.on('change', function(name) {
                         if (err) throw err;
     
                         console.log("Save mongo");
-                        messenger.sendTextMessage({id: '814945133', text: 'Hello'})
                         fs_sync.remove(destFile);
 
                     })
